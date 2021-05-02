@@ -1,0 +1,20 @@
+{
+  "manifest_version": 2,
+  "name": "Gender Neutral Text",
+  "version": "0.3",
+  "content_scripts": [
+    {
+      "matches": ["*://*/*"],
+      "js": ["content.js"],
+      "run_at": "document_end"
+    }
+  ],
+  "browser_action": {
+    "default_icon": "icon.png",
+    "default_popup": "popup.html",
+    "default_title": "A popup is here"
+  },
+  "background": {
+    "scripts": ["background.js"]
+  }
+}

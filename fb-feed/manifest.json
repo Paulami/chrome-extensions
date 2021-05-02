@@ -1,0 +1,22 @@
+{
+  "manifest_version": 2,
+  "name": "Guardian FB Feed",
+  "version": "0.1",
+  "content_scripts": [
+    {
+      "matches": ["*://www.facebook.com/"],
+      "js": ["content_fb.js"],
+      "css": ["fb.css"],
+      "run_at": "document_end"
+    }
+  ],
+  "browser_action": {
+    "default_icon": "icon.png",
+    "default_popup": "popup.html",
+    "default_title": "A popup is here"
+  },
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "permissions": ["activeTab"]
+}
