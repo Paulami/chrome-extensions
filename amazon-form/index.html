@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+</head>
+<body>
+
+<div class="intro-container">
+    <h1 class="header">How green is your delivery</h1>
+    <div class="intro-grid">
+        <p>But both of their posts avoided discussing the actual series of events that had led up to the policies, which were
+        related directly to the workplace. In fact, the events all took place on Basecamp’s own software, which it sells to
+        other companies on the promise of improving cohesion and reducing stress in the workplace.<br><br>Employees say the founders’ memos unfairly depicted their workplace as being riven by partisan politics, when in fact
+        the main source of the discussion had always been Basecamp itself.
+        </p>
+        <img src="tempimg.png" alt="Girl in a jacket">
+    </div>
+</div>
+
+<div id="outside">
+    <form id="my-form" >
+        <h1 id="title">Check Your footprint</h1>
+            <p>
+                <label>Type of material</label><br>
+                <label><input type="radio" name="material" data-price="10" value="Small (less than 1sq. foot)"> Small (less than 1sq. foot)<br></label>
+                <label><input type="radio" name="material" data-price="20" value="Medium (between 1sq. foot to 2 sq. foot)"> Medium (between 1sq. foot to 2 sq. foot)<br></label>
+                <label><input type="radio" name="material" data-price="30" value="Large (Anything more than 2 sq. feet)"> Large (Anything more than 2 sq. feet) <br></label>
+            </p>
+            <p>
+                <label>Warranty</label><br>
+                <label><input type="radio" name="warranty" data-price="0" value="true"> Yes <br></label>
+                <label><input type="radio" name="warranty" data-price="10" value="false"> No <br></label>
+            </p>
+            <p>
+                <label>Type of Seller</label><br>
+                <label><input type="radio" name="seller" data-price="10" value="amazon"> Amazon <br></label>
+                <label><input type="radio" name="seller" data-price="20" value="other"> Third Party <br></label>
+            </p>
+            <p>
+                <label>Delivery Period</label><br>
+                <label><input type="radio" name="times" data-price="100" value="amazon"> One day <br></label>
+                <label><input type="radio" name="times" data-price="50" value="other"> One week <br></label>
+                <label><input type="radio" name="times" data-price="10" value="other"> One month <br></label>
+            </p>
+    </form>
+    <div class="result">
+        <h1>You scored <span id="my-total"></span></h1>
+        <span id="tagline"></span>
+    </div>
+</div>
+
+
+<script>
+    $('#my-form').on('change', function(){
+    update_total();
+    });
+    function update_total(){
+    var tot = 0;
+    var price = 0;
+    $('#my-form input:checked').each(function(){
+        price = $(this).data('price');
+        if(price > 0){
+        tot += price;
+        }
+    });
+    $('#my-form select').each(function(){
+        price = $("option:selected", this).data('price');
+        if(price > 0){
+        tot += price;
+        }
+    });
+    $('#my-total').html(tot);
+    if(tot >= 10 && tot <=100)
+    $('#tagline').html("This is a smart move. Your carbon footprint is very low.");
+    else{
+    if(tot >= 101 && tot <=300)
+    $('#tagline').html("If you buy from a local shop, it will be half the score.");
+    else{
+        if(tot >= 301)
+        $('#tagline').html("Oops, the footprint is extremely high.");
+    }
+    }
+    }
+    update_total();
+
+    $('[data-max-check] input[type=checkbox]').on('click', function(e){
+    var $parent = $(this).closest('[data-max-check]');
+    var max = $parent.data('max-check');
+    var chk = $parent.find('input[type=checkbox]:checked').size();
+    if(chk > max){
+        alert('You can only select up to ' + max);
+        e.preventDefault();
+    }
+    });
+</script>
+</body>
+</html>

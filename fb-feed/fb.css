@@ -3,7 +3,7 @@
   }
   section > div {
     margin: 20px auto;
-    background-color: #fff;
+    background-color: #242526;
     overflow: hidden;
     padding: 20px;
     border-radius: 10px;
@@ -26,6 +26,7 @@
   section .title {
     margin-top: 0px;
     padding-left: 40px;
+    color: #e4e6eb;
   }
   .image {
     width: 100%;
@@ -33,13 +34,15 @@
   }
   section a {
     text-decoration: none;
-    color: black;
+    color: #e4e6eb;
   }
 
   section p {
     font-weight: 500;
+    color: #e4e6eb;
   }
 
   .description {
     margin-top: 5px;
+    color: #e4e6eb;
   }
